@@ -30,15 +30,6 @@ class FileEditor
 		$this->$arrayStrings = $array;
 	}
 
-
-//	public function displayFile()
-//	{
-//		foreach ($this->arrayStrings as $string)
-//		{
-//			echo $string.'<br>';
-//		}
-//	}
-
 	public function display()
 	{
 		return implode("<br>", $this->arrayStrings);

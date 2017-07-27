@@ -3,7 +3,6 @@
 include_once __DIR__ . "/lib/config.php";
 include_once ROOT . "/lib/FileEditor.php";
 
-echo '<pre>';
 $data="";
 
 if(isset($_POST['viewAll']))
