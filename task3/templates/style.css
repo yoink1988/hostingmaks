@@ -42,9 +42,11 @@ a{
 }
 
 .content form{
+	
+	display:block;
 	background: rgb(199,177,214);
-	width: 1000px;
-	margin: auto;
+	width: 300px;
+	margin-top: 20px;
 }
 
 

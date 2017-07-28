@@ -42,25 +42,32 @@ class FileEditor
 
 	public function readString($stringNumber)
 	{
-		if($stringNumber <= $this->getCountStrings())
+		if((int)($stringNumber))
 		{
-			return $this->arrayStrings[$stringNumber -1];
+			if($stringNumber <= $this->getCountStrings())
+			{
+				return $this->arrayStrings[$stringNumber -1];
+			}
 		}
-		return false;
+		return NO_STRING.', try to type an Int value';
 	}
 
 	public function readChar($lineNum, $charNum)
 	{
-		$char = $charNum - 1;
-		if($line = $this->readString($lineNum))
+		if((int)($lineNum) && (int)($charNum))
 		{
-			if(isset($line[$char]))
+			$char = $charNum - 1;
+			if($line = $this->readString($lineNum))
 			{
-				return $line[$char];
+				if(isset($line[$char]))
+				{
+					return $line[$char];
+				}
+				return NO_CHAR;
 			}
-			return NO_CHAR;
+			return NO_STRING;
 		}
-		return NO_STRING;
+		return NO_STRING.", try to type an Int value";
 	}
 
 	public function writeString($lineNum, $string)
@@ -93,6 +100,17 @@ class FileEditor
 			}
 			if($i == $line)
 			{
+				for($j=0; $j <= $Num; $j++)
+				{
+					if(empty($this->arrayStrings[$i][$j]))
+					{
+						$this->arrayStrings[$i][$j] = " ";
+					}
+					if($this->arrayStrings[$i][$j] == $Num)
+					{
+						$this->arrayStrings[$i][$j] = $char;
+					}
+				}
 				$this->arrayStrings[$i][$Num] = $char;
 				$this->save();
 				return SUCCESS;
